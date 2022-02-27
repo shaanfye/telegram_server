@@ -13,11 +13,10 @@ const port = process.env.PORT || 3000;
 
 const app = express();
 app.use(cors());
-app.options('*', cors());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
-
+app.options('/log', cors());
 app.post('/log', function (req, res) {
   console.log(req.body);
   var link_l = '';
