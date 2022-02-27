@@ -9,8 +9,11 @@ const TelegramBot = require('node-telegram-bot-api');
 const key1 = process.env.TG_API;
 const bot = new TelegramBot(key1, {polling:true});
 
+const port = process.env.PORT || 3000;
+
 const app = express();
 app.use(cors());
+app.options('*', cors());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
@@ -35,7 +38,7 @@ app.post('/log', function (req, res) {
 
 })
 
-app.listen(3000);
+app.listen(PORT);
 
 bot.onText(/\/start/, (msg) => {
   bot.sendMessage(msg.chat.id, "Welcome");
