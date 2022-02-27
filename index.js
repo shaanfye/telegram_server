@@ -13,11 +13,16 @@ const port = process.env.PORT || 3000;
 
 const app = express();
 app.use(cors());
+
+var corsOptions = {
+origin: 'chrome-extension://ijpmhigaeejpfdfmmcknphhknciedmgl',
+optionsSuccessStatus: 200
+}
+
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
-app.options('/log', cors());
-app.post('/log', function (req, res) {
+app.post('/log', cors(corsOptions), function (req, res) {
   console.log(req.body);
   var link_l = '';
   link_l += '\u{1F4A3}   ' + '<b>' + req.body.summary + '</b>' +'\n'+'_____________________' + '\n\n';
