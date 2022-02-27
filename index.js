@@ -9,27 +9,23 @@ const TelegramBot = require('node-telegram-bot-api');
 const key1 = process.env.TG_API;
 const bot = new TelegramBot(key1, {polling:true});
 
-const port = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3000;
 
 const app = express();
 app.use(cors());
 
-var corsOptions = {
-origin: 'chrome-extension://ijpmhigaeejpfdfmmcknphhknciedmgl',
-optionsSuccessStatus: 200
-}
+// var corsOptions = {
+// origin: 'chrome-extension://ijpmhigaeejpfdfmmcknphhknciedmgl',
+// optionsSuccessStatus: 200
+// }
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
-app.post('/log', cors(corsOptions), function (req, res) {
+app.post('/log', function (req, res) {
   console.log(req.body);
   var link_l = '';
   link_l += '\u{1F4A3}   ' + '<b>' + req.body.summary + '</b>' +'\n'+'_____________________' + '\n\n';
-  // for (var link of req.body.content) {
-  //   console.log(link);
-  //   link_l += "\u{1F604}   " + link.toString() + '\n\n';
-  // }
 
   for (var pair of req.body.updated_content) {
     console.log(pair);
