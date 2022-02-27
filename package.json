@@ -1,0 +1,20 @@
+{
+  "name": "server_node",
+  "version": "1.0.0",
+  "description": "server that handles the chrome extensions",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "html-webpack-plugin": "^5.5.0",
+    "jade": "^1.11.0",
+    "node-telegram-bot-api": "^0.56.0"
+  }
+}
